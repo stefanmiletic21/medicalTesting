@@ -1,0 +1,28 @@
+{
+    "Requests":[
+        {
+            "Method":"POST", 
+            "API":"login",
+            "Data":{
+                "Username":"spiderman",
+                "Password":"spiderman"
+            }
+        },
+        {
+            "Method":"POST", 
+            "API":"auth/pass",
+            "Data":{
+                "OldPass": "spiderman",
+                "NewPass": "mysterio"
+            }
+        },
+        {
+            "Method":"POST", 
+            "API":"login",
+            "Data":{
+                "Username":"spiderman",
+                "Password":"mysterio"
+            }
+        }
+    ]
+}

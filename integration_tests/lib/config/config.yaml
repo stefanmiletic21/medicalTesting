@@ -1,0 +1,7 @@
+api_url: http://localhost:8080/
+database:
+  database: projekat
+  user: postgres
+  host: localhost
+  password: postgres
+  port: 5432

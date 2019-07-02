@@ -1,0 +1,22 @@
+{
+    "Requests":[
+        {
+            "Method":"GET", 
+            "API":"/auth/doctor/test",
+            "Data":{
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"/auth/doctor/test/",
+            "Data":{
+            }
+        },
+        {
+            "Method":"DELETE", 
+            "API":"/auth/doctor/test/",
+            "Data":{
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "Results":[
+        {
+            "WorkDocumentId":   "asd123",
+            "RoleId":           3,
+            "Username":         "loki",
+            "Password":         "e64cfa3fd59e32df57003c7401f48c99"
+        },
+        {
+            "Username":         "odin",
+            "Password":         "e44985980c9d3c5d70b6a548b14d773a",
+            "WorkDocumentId":   "255422211234",
+            "RoleId":           4
+        },
+        {
+            "Username":         "rogue",
+            "Password":         "44ac6119a7a7a60e65a3e2b852ebd6c0",
+            "WorkDocumentId":   "bcd345",
+            "RoleId":           4,
+            "Name":             "May",
+            "Surname":          "Parker"
+        }
+    ]
+}

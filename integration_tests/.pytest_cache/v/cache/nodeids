@@ -1,0 +1,11 @@
+[
+  "changePass/changePass_test.py::test_change_pass", 
+  "employee/employee_test.py::test_employee", 
+  "examination/examination_test.py::test_examination", 
+  "filledTest/filledTest_test.py::test_filled_tests", 
+  "patient/patient_test.py::test_patient", 
+  "person/person_test.py::test_person", 
+  "session/session_test.py::test_login_logout", 
+  "test_test.py/test_test.py::test_test", 
+  "user/user_test.py::test_user"
+]

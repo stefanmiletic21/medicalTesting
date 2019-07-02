@@ -1,0 +1,801 @@
+1)LOGIN
+	Endpoint: /login
+	Method: POST
+	
+	Request:
+	{
+		Username string
+		Password string
+	}
+	
+	Response:
+	{
+		Authenticated bool
+		Username string
+		UserUID string
+		Authorization string
+		Role enum
+	}
+
+	RoleAdmin    Role = 1
+	RoleDoctor   Role = 2
+	RoleResearch Role = 3
+	RoleNurse    Role = 4
+
+	Authorization that is returned as a response is used in all of the following requests as a salt for hashing time for header authorization:
+	"Authorization":"<UTCtimeInRFC3339Format>|<UTCtimeInRFC3339FormatHashedWithTokenAsSalt>
+
+2)LOGOUT
+	Endpoint:  /logout
+	Metod: POST
+	
+	Request:<empty>
+	
+	Response:<empty>
+
+2.5)CHANGE PASS
+	Endpoint: /auth/pass
+	Method: POST
+	
+	Request: 
+	{
+		OldPass string
+		NewPass string
+	}
+	
+	Response:<empty>
+
+3)ADMIN API
+	3.1)Person
+		3.1.1)Create person
+			Endpoint: /auth/admin/person
+			Method: POST
+			
+			Request:
+			{
+				Name        string
+				Surname     string
+				JMBG        string
+				DateOfBirth string
+				Address     string
+				Email       string
+			}
+			
+			NOTE: Date format - "1989-10-21T00:00:00Z"
+
+			Response:
+			{
+				Uid string
+			}
+			
+		3.1.2)Update person
+ 			Endpoint:  /auth/admin/person/{personUID}
+			Method: PATCH
+			
+			Request:
+			{
+				Name        string
+				Surname     string
+				JMBG        string
+				DateOfBirth string
+				Address     string
+				Email       string
+			}
+
+			Response: <empty>
+		
+		3.1.3) Get  person
+			Endpoint:  /auth/admin/person/{personUID}
+			Method: GET
+			
+			Request:<empty>
+			
+			Response:
+			{
+				Name        string
+				Surname     string
+				JMBG        string
+				DateOfBirth string
+				Address     string
+				Email       string
+			}
+		
+		3.1.4)Get all persons
+			Endpoint:  /auth/admin/person
+			Method: GET
+
+			Request:<empty>
+			
+			Response:
+			{
+				Persons: [
+					{
+						Uid			string
+						Name        string
+						Surname     string
+						JMBG        string
+					},
+					{
+						Uid			string
+						Name        string
+						Surname     string
+						JMBG        string
+					}
+					.....
+				]
+			}
+
+		3.1.5) Delete person
+			Endpoint:  /auth/admin/person/{personUID}
+			Method: DELETE
+			
+			Request:<empty>
+			
+			Response:<empty>
+
+
+	3.2)Employee
+		3.2.1)Create employee
+			Endpoint: /auth/admin/employee
+			Method: POST
+			
+			Request:
+			{
+				Name        	string 
+				Surname     	string 
+				JMBG        	string 
+				DateOfBirth 	string 
+				Address     	string 
+				Email       	string 
+				PersonUid 		string 
+				WorkDocumentId 	string
+				RoleId        	int
+			}
+			NOTE:You should either send PersonUid of existing person, or data for creating new person for employee.
+			
+			Response:
+			{
+				Uid string
+			}
+
+		3.2.2) Update employee
+			Endpoint: /auth/admin/employee/{employeeUid}
+			Method: PATCH
+			
+			Request:
+			{
+				Name        	string
+				Surname     	string
+				JMBG        	string
+				DateOfBirth 	string
+				Address     	string
+				Email       	string
+				WorkDocumentId 	string
+				RoleId         	int
+			}
+
+			Response:<empty>
+	
+		3.2.3) Get employee
+			Endpoint: /auth/admin/employee/{employeeUid}
+			Method: GET
+
+			Request:<empty>
+			
+			Response:
+			{
+				Uid 			string
+				Name        	string
+				Surname     	string
+				JMBG        	string
+				DateOfBirth 	string
+				Address     	string
+				Email       	string
+				WorkDocumentId 	string
+				RoleId         	int
+			}
+			
+			
+		3.2.4) Get employees
+			Endpoint: /auth/admin/employee
+			Method: GET
+			
+			Request: <empty>
+			
+			Response:
+			{
+				Employees:[
+					{
+						Uid 			string
+						Name        	string
+						Surname     	string
+						WorkDocumentId 	string
+						RoleId         	int
+					},
+					{
+						Uid 			string
+						Name        	string
+						Surname     	string
+						WorkDocumentId 	string
+						RoleId         	int
+					}
+					........
+				]
+			}
+
+		3.2.4) Delete employee
+			Endpoint: /auth/admin/employee/{employeeUid}
+			Method: DELETE
+
+			Request: <empty>
+
+			Response: <empty>
+
+	3.3)User
+		3.3.1)Create user
+			Endpoint: /auth/admin/user
+			Method: POST
+			
+			Request:
+			{
+				Name        	string
+				Surname     	string
+				JMBG        	string
+				DateOfBirth 	string
+				Address     	string
+				Email       	string
+				EmployeeUid 	string
+				WorkDocumentId 	string
+				RoleId         	int
+				Username 		string
+				Password 		string
+			}
+			NOTE:You should either send EmployeeUid of existing employee, or data for creating new employee.
+			
+			Response:
+			{
+				Uid string
+			}
+
+		3.3.2) Update user
+			Endpoint: /auth/admin/user/{userUID}
+			Method: PATCH
+			
+			Request:
+			{
+				Name        	string
+				Surname     	string
+				JMBG        	string
+				DateOfBirth 	string
+				Address     	string
+				Email       	string
+				WorkDocumentId 	string
+				RoleId         	int
+				Username  		string
+				Password 		string
+			}
+
+			Response: <empty>
+
+		3.3.3) Get user
+			Endpoint: /auth/admin/user/{userUID}
+			Method: GET
+
+			Request:<empty>
+			
+			Response:
+			{
+				Uid 			string
+				Name        	string
+				Surname     	string
+				JMBG        	string
+				DateOfBirth 	string
+				Address     	string
+				Email       	string
+				WorkDocumentId 	string
+				RoleId         	int
+				Username 		string
+			}
+
+		3.3.4) Get users
+			Endpoint: /auth/admin/user
+			Method: GET
+			
+			Request:<empty>
+			
+			Response:
+			{
+				Users:[
+					{
+						Uid string
+						Name        string
+						Surname     string
+						WorkDocumentId string
+						RoleId         int
+						Username string
+					},
+					{
+						Uid string
+						Name        string
+						Surname     string
+						WorkDocumentId string
+						RoleId         int
+						Username string
+					}
+					........
+				]
+			}
+		
+		3.3.4) Delete user
+			Endpoint: /auth/admin/user/{userUID}
+			Method: DELETE
+
+			Request:<empty>
+
+			Response:<empty>
+
+4)Nurse API
+	4.1)Person
+		4.1.1)Create person
+			Endpoint: /auth/nurse/person
+			Method: POST
+			
+			Request:
+			{
+				Name        string
+				Surname     string
+				JMBG        string
+				DateOfBirth string
+				Address     string
+				Email       string
+			}
+			
+			NOTE: Date format - "1989-10-21T00:00:00Z"
+
+			Response:
+			{
+				Uid string
+			}
+			
+		4.1.2)Update person
+ 			Endpoint:  /auth/nurse/person/{personUID}
+			Method: PATCH
+			
+			Request:
+			{
+				Name        string
+				Surname     string
+				JMBG        string
+				DateOfBirth string
+				Address     string
+				Email       string
+			}
+
+			Response: <empty>
+		
+		4.1.3) Get  person
+			Endpoint:  /auth/nurse/person/{personUID}
+			Method: GET
+			
+			Request:<empty>
+			
+			Response:
+			{
+				Name        string
+				Surname     string
+				JMBG        string
+				DateOfBirth string
+				Address     string
+				Email       string
+			}
+		
+		4.1.4)Get all persons
+			Endpoint:  /auth/nurse/person
+			Method: GET
+
+			Request:<empty>
+			
+			Response:
+			{
+				Persons: [
+					{
+						Uid			string
+						Name        string
+						Surname     string
+						JMBG        string
+					},
+					{
+						Uid			string
+						Name        string
+						Surname     string
+						JMBG        string
+					}
+					.....
+				]
+			}
+
+	4.2)Patient
+		4.2.1)Create patient
+			Endpoint: /auth/nurse/patient
+			Method: POST
+			
+			Request:
+			{
+				Name        			string 
+				Surname     			string 
+				JMBG        			string 
+				DateOfBirth 			string 
+				Address     			string 
+				Email       			string 
+				PersonUid 				string 
+				MedicalRecordId      	string    
+				HealthCardId         	string    
+				HealthCardValidUntil 	string 
+			}
+			
+			Date format - "1989-10-21T00:00:00Z"
+			NOTE:You should either send PersonUid of existing person, or data for creating new person for patient.
+			
+			Response:
+			{
+				Uid string
+			}
+
+		4.2.2) Update patient
+			Endpoint: /auth/nurse/patient/{patientUid}
+			Method: PATCH
+			Request:
+			{
+				Name        			string
+				Surname     			string
+				JMBG        			string
+				DateOfBirth 			string
+				Address     			string
+				Email       			string
+				MedicalRecordId      	string   
+				HealthCardId         	string   
+				HealthCardValidUntil 	string 
+			}
+
+			Response: <empty>
+		
+		4.2.3) Get patient
+			Endpoint: /auth/nurse/patient/{patientUid}
+			Method: GET
+			
+			Request:<empty>
+			
+			Response:
+			{
+				Uid string
+				Name        string
+				Surname     string
+				JMBG        string
+				DateOfBirth string
+				Address     string
+				Email       string
+				MedicalRecordId      string   
+				HealthCardId         string   
+				HealthCardValidUntil string 
+			}
+
+		4.2.4)Get patients
+			Endpoint: /auth/nurse/patient
+			Method: GET
+
+			Request: <empty>
+
+			Response:
+			{
+				Patients:[
+					{
+						Uid string
+						Name        			string
+						Surname     			string
+						MedicalRecordId      	string   
+						HealthCardId         	string   
+						HealthCardValidUntil 	string 
+					},
+					{
+						Uid string
+						Name        			string
+						Surname     			string
+						MedicalRecordId      	string   
+						HealthCardId         	string   
+						HealthCardValidUntil 	string 
+					}
+					...........
+				]
+			}
+
+		4.2.4) Delete patient
+			Endpoint: /auth/nurse/patient/{patientUid}
+			Method: DELETE
+
+			Request: <empty>
+			
+			Response: <empty>
+
+	4.3)Examination
+		4.3.1)Create examination
+			Endpoint: /auth/nurse/examination
+			Method: POST
+			
+			Request:
+			{
+				DoctorUid string,
+				PatientUid string,
+				ExaminationDate string
+			}
+			
+			Response:
+			{
+				Uid string
+			}
+
+		4.3.2) Get examinations
+			Endpoint:  /auth/nurse/examination
+			Method: GET
+
+			Request: <empty>
+			
+			Response:
+			{
+				Examination: [
+					{
+						Uid 			string,
+						DoctorUid 		string,
+						DoctorFullName 	string,
+						PatientUid		string,
+						PatientFullName	string,
+						ExaminationDate string
+					},
+					{
+						Uid 			string,
+						DoctorUid 		string,
+						DoctorFullName 	string,
+						PatientUid		string,
+						PatientFullName	string,
+						ExaminationDate string
+					}
+					...........
+				]
+			}
+		
+		4.3.3) Delete examinationn
+			Endpoint:  /auth/nurse/examination/{examinationUID}
+			Method: DELETE
+
+			Request: <empty>
+
+			Response: <empty>
+
+	4.4)Doctors
+		4.4.1)Get doctors
+			Endpoint:  /auth/nurse/doctor
+			Method: GET
+			
+			Request: <empty>
+			
+			Response:
+			{
+				Employees:[
+					{
+						Uid 			string
+						Name        	string
+						Surname     	string
+						WorkDocumentId 	string
+					},
+					{
+						Uid 			string
+						Name        	string
+						Surname     	string
+						WorkDocumentId 	string
+					}
+				]
+			}
+
+5)Doctor API
+	5.1)Test
+		5.1.1)Create test
+			Test is created by uploading excel file(look at the example.xlsx). 
+			Upload is done by doing POST with form on /auth/doctor/test with file in form-data. 
+			In form the file is stored with name fileUpload. 
+			Additional attributes are  "name" with test name and specialty that is speialization enum.
+			File format:
+				Control words are in first column(names are  customizable by changing server.toml)
+				Start - begining of the question structure
+				Question - in the cell to the right of it is the text of the question
+				Type- in a cell to the right is the type of the answer options (text, radio, checkbox, number)
+				Answers - valid only for radio and checkbox, in the cells to the right are the potential answers that are shown to the user
+				End - ending of the question structure
+		5.1.2)Get tests
+			Endpoint: /auth/doctor/test
+			Method: GET
+			
+			Request: <empty>
+			Response 
+				{
+					Tests:   
+					[
+						{
+							"Name": 		string,,
+							"UID":			string, 
+							"Specialty": 	int
+						},
+						{
+							"Name": 		string,,
+							"UID":			string, 
+							"Specialty": 	int
+						}
+						........
+					]
+				}
+		
+		5.1.3)Get tests
+			Endpoint: /auth/doctor/test/{testUID}
+			Method: GET
+
+			Request:<empty>
+		
+			Response 
+			{
+				"Uid": 			string,
+				"Specialty": 	int,
+				"Name":			<name>
+				"Questions": 
+				[
+					{
+						"Type": string,
+						"Answers": []string,
+						"Question": string
+					},
+					.......
+				]
+			}
+		5.1.2)Delete test
+			Endpoint: /auth/doctor/test/{testUID}
+			Method: DELETE
+
+			Request:<empty>
+
+			Response:<empty
+	
+	5.2)Filled test
+		5.2.1)Create filled test
+			Endpoint: /auth/doctor/filled
+			Method: POST
+			
+			Request:
+			{
+				"ExaminationUid": string
+				"TestUid":string
+				"Answers":json
+			}
+
+			Response: <empty>
+	
+		5.2.2)Get filled tests
+			Endpoint: /auth/doctor/filled
+			Method: GET
+
+			Request:<empty>
+
+			Response 
+			{
+				"FilledTests": 
+				[
+					{
+						"Uid": string
+						"TestName": string
+						"ExaminationDate": time
+						"PatientName": string
+						"PatientUid": string
+					},
+					{
+						"Uid": string
+						"TestName": string
+						"ExaminationDate": time
+						"PatientName": string
+						"PatientUid": string
+					}			
+					.....
+				]
+			}
+
+		5.2.3)Get filled test
+			Endpoint: /auth/doctor/filled/{filledTestUID}
+			Method: GET
+
+			Request:<empty>
+
+			Response
+				{
+					"TestUid": 			string,
+					“TestName”:			string,
+					"ExaminationUID": 	string,
+					"Answers": 			json
+				}
+
+		5.2.4)Delete filled test
+			Endpoint:  /auth/doctor/filled/{filledTestUID}
+			Method: DELETE
+
+			Request:<empty>
+
+			Response:<empty>
+	
+
+	5.3) Examinations
+		5.3.1) Read examinations
+			Endpoint:  /auth/doctor/examination
+			Method: GET
+
+			Request: <empty>
+			
+			Response:
+			{
+				Examination: [
+					{
+						Uid 			string, 
+						DoctorUid		string,
+						DoctorFullName	string,
+						PatientUid		string,
+						PatientFullName	string,
+						ExaminationDate	string
+					},
+					{
+						Uid 			string, 
+						DoctorUid		string,
+						DoctorFullName	string,
+						PatientUid		string,
+						PatientFullName	string,
+						ExaminationDate	string
+					}
+					.........
+				]
+			}
+
+6)Research API
+	6.1)Filled tests
+		6.1.1)Get filled tests
+			Endpoint: /auth/research/filled
+			Method: GET
+
+			Request:<empty>
+
+			Response 
+			{
+				"FilledTests": 
+				[
+					{
+						"Uid": string
+						"TestName": string
+						"ExaminationDate": time
+						"PatientName": string
+						"PatientUid": string
+					},
+					{
+						"Uid": string
+						"TestName": string
+						"ExaminationDate": time
+						"PatientName": string
+						"PatientUid": string
+					}			
+					.....
+				]
+			}
+
+		6.1.2)Get filled test
+			Endpoint: /auth/research/filled/{filledTestUID}
+			Method: GET
+
+			Request:<empty>
+
+			Response
+				{
+					"TestUid": 			string,
+					“TestName”:			string,
+					"ExaminationUID": 	string,
+					"Answers": 			json
+				}

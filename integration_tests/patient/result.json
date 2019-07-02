@@ -1,0 +1,28 @@
+{
+    "Results":[
+        {
+            "MedicalRecordId":      "abc123", 
+            "HealthCardId":         "caaddda",  
+            "HealthCardValidUntil": "2020-09-22T00:00:00Z",
+            "Name":                 "Martha",
+            "Surname":              "Kent",
+            "JMBG":                 "2209976792345"
+        },
+        {
+            "MedicalRecordId":      "dasd", 
+            "HealthCardId":         "rwqq",  
+            "HealthCardValidUntil": "2024-09-22T00:00:00Z",
+            "Name":                 "Natasha",
+            "Surname":              "Romanova",
+            "JMBG":                 "255422211234"
+        },
+        {
+            "Name":             "May",
+            "Surname":          "Parker",
+            "JMBG":             "2111980792345",
+            "Email":            "may@hotmail.com",
+            "MedicalRecordId":      "eeeeee", 
+            "HealthCardId":         "adadda"
+        }
+    ]
+}

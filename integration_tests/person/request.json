@@ -1,0 +1,46 @@
+{
+    "Requests":[
+        {
+            "Method":"POST", 
+            "API":"auth/admin/person",
+            "Data":{
+                "Name":     "Martha",
+                "Surname":    "Kent",
+                "JMBG":        "2209976792345",
+                "DateOfBirth": "1976-09-22T00:00:00Z",
+                "Address":     "Main street 1, Peaks, Colorado",
+                "Email":       "martha@outlook.com"
+            }
+        },
+        {
+            "Method":"PATCH", 
+            "API":"auth/admin/person/",
+            "Data":{
+                "Name":         "May",
+                "Surname":      "Parker",
+                "JMBG":         "2111980792345",
+                "DateOfBirth":  "1980-11-21T00:00:00Z",
+                "Address":      "Main street 1, New York, New York",
+                "Email":        "may@hotmail.com"
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"auth/admin/person",
+            "Data":{
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"auth/admin/person/",
+            "Data":{
+            }
+        },
+        {
+            "Method":"DELETE", 
+            "API":"auth/admin/person/",
+            "Data":{
+            }
+        }
+    ]
+}

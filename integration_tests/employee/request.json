@@ -1,0 +1,65 @@
+{
+    "Requests":[
+        {
+            "Method":"POST", 
+            "API":"auth/admin/employee",
+            "Data":{
+                "Name":             "Martha",
+                "Surname":          "Kent",
+                "JMBG":             "2209976792345",
+                "DateOfBirth":      "1976-09-22T00:00:00Z",
+                "Address":          "Main street 1, Peaks, Colorado",
+                "Email":            "martha@outlook.com",
+                "WorkDocumentId": 	"asd123",
+                "RoleId":        	3
+            }
+        },
+        {
+            "Method":"POST", 
+            "API":"auth/admin/employee",
+            "Data":{
+                "PersonUid":        "66a45c1b-19af-4ab5-8747-1b0e2d79339d",
+                "WorkDocumentId": 	"bcd345",
+                "RoleId":        	1
+            }
+        },
+        {
+            "Method":"PATCH", 
+            "API":"auth/admin/employee/",
+            "Data":{
+                "Name":             "May",
+                "Surname":          "Parker",
+                "JMBG":             "2111980792345",
+                "DateOfBirth":      "1980-11-21T00:00:00Z",
+                "Address":          "Main street 1, New York, New York",
+                "Email":            "may@hotmail.com",
+                "WorkDocumentId": 	"bcd345",
+                "RoleId":        	2
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"auth/admin/employee",
+            "Data":{
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"auth/admin/employee/",
+            "Data":{
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"/auth/nurse/doctor",
+            "Data":{
+            }
+        },
+        {
+            "Method":"DELETE", 
+            "API":"auth/admin/employee/",
+            "Data":{
+            }
+        }
+    ]
+}

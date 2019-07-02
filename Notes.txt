@@ -1,0 +1,24 @@
+Basic info:
+    This is a server for defining, filling and viewing of medical tests(quizes).
+    There are few roles in system:
+    - Admin - makes and manages employees and users of the system
+    - Nurse - makes patients and schedules and assigns exams
+    - Doctor - defines different medical tests, retrieves tests for his specialty and fills them during the exam
+    - Researcher - can only view filled tests
+
+    New tests are defined by uploading strictly structured excell file to the server (more on that in "Api reference.txt" and "example.xlsx")
+
+Security:
+    When user logs in, he gets token for  authorization. After that token is used as a salt for making authorization hash
+    <currentTimeInUTC>|<currentTimeInUTCSaltedByTokenAndHashed>. There is a 5min allowed deviation between time in request and calculated
+    current UTC time, so even if stolen hash is useless after 5 minutes.
+
+    Assumption is that in front of the server there would be another web server that encrypts http to https and adds Access-controll headers.
+
+
+Tests:
+    There is a bundle of tests in integration_tests folder that are run by pytest.
+
+    For testing purposes there is an API endpoint /testingHash that gives you back expected header that you can use. This API is only available
+    if config parameter is_testing_mode is set to true and if request is comming from localhost.
+

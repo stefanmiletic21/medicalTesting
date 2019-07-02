@@ -1,0 +1,31 @@
+{
+    "Requests":[
+        {
+            "Method":"POST", 
+            "API":"auth/nurse/examination",
+            "Data":{
+                "DoctorUid": "39240e9f-ae09-4e95-9fd0-a712035c8ad7",
+				"PatientUID": "66a45c1b-19af-4ab5-8747-1b0e2d79339d",
+                "ExaminationDate": "2020-11-21T00:00:00Z"
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"auth/nurse/examination",
+            "Data":{
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"auth/doctor/examination",
+            "Data":{
+            }
+        },
+        {
+            "Method":"DELETE", 
+            "API":"auth/nurse/examination/",
+            "Data":{
+            }
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "Requests":[
+        {
+            "Method":"POST", 
+            "API":"auth/doctor/filled",
+            "Data":{
+                "ExaminationUid":"66a45c1b-19af-4ab5-8747-1b0e2d79339d",
+                "TestUid":"66a45c1b-19af-4ab5-8747-1b0e2d79339d",
+                "Answers":"{'How much your head hurts?':9,'Where?':'Frontal'}"
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"auth/doctor/filled",
+            "Data":{
+            }
+        },
+        {
+            "Method":"GET", 
+            "API":"auth/doctor/filled/",
+            "Data":{
+            }
+        },
+        {
+            "Method":"DELETE", 
+            "API":"auth/doctor/filled/",
+            "Data":{
+            }
+        }
+    ]
+}

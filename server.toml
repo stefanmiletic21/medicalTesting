@@ -1,0 +1,29 @@
+[general]
+is_testing_mode = true
+
+[http]
+http_read_timeout  = "15s"
+http_write_timeout = "15s"
+ssl_certificate_path =""
+ssl_keystore_path = ""
+http_server_address = ":8080"
+http_server_address_secure = ":443"
+
+[db]
+connection = "postgres://postgres:postgres@localhost/projekat?sslmode=disable"
+max_idle_connections = 10
+max_open_connections = 50
+max_lifetime = "60s"
+
+[questions]
+start = "Start"
+end = "End"
+text = "Question"
+type = "Type"
+answers = "Answers"
+
+[question_type_names]
+free_text = "Text"
+free_numerical = "Number"
+radio_group = "Radio"
+checkbox = "Checkbox"

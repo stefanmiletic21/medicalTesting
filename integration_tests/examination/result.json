@@ -1,0 +1,26 @@
+{
+    "Results":[
+        {
+            "DoctorUid": "39240e9f-ae09-4e95-9fd0-a712035c8ad7",
+            "DoctorName": "Bruce Banner",
+            "PatientUid": "66a45c1b-19af-4ab5-8747-1b0e2d79339d",
+            "PatientName": "Natasha Romanova",
+            "ExaminationDate": "2020-11-21T00:00:00Z"
+        },
+        {
+            "DoctorUid":"39240e9f-ae09-4e95-9fd0-a712035c8ad7",
+            "DoctorFullName":"Bruce Banner",
+            "PatientUid":"66a45c1b-19af-4ab5-8747-1b0e2d79339d",
+            "PatientFullName":"Natasha Romanova",
+            "ExaminationDate":"2020-11-21T00:00:00Z"
+        },
+        {
+            "Username":         "rogue",
+            "Password":         "44ac6119a7a7a60e65a3e2b852ebd6c0",
+            "WorkDocumentId":   "bcd345",
+            "RoleId":           4,
+            "Name":             "May",
+            "Surname":          "Parker"
+        }
+    ]
+}

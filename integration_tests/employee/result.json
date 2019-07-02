@@ -1,0 +1,41 @@
+{
+    "Results":[
+        {
+            "WorkDocumentId":   "asd123",
+            "RoleId":           3,
+            "Name":             "Martha",
+            "Surname":          "Kent",
+            "JMBG":             "2209976792345"
+        },
+        {
+            "WorkDocumentId":   "bcd345",
+            "RoleId":           1,
+            "Name":             "Natasha",
+            "Surname":          "Romanova",
+            "JMBG":             "255422211234"
+        },
+        {
+            "Name":             "May",
+            "Surname":          "Parker",
+            "JMBG":             "2111980792345",
+            "Email":            "may@hotmail.com",
+            "WorkDocumentId": 	"bcd345",
+            "RoleId":        	2
+        },
+        {
+            "Employees":
+            [
+                {
+                    "Name":"Bruce",
+                    "Surname":"Banner",
+                    "WorkDocumentId":"2352352352352"
+                },
+                {
+                    "Name":"May",
+                    "Surname":"Parker",
+                    "WorkDocumentId":"bcd345"
+                }
+            ]
+        }
+    ]
+}
